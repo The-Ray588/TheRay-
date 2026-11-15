@@ -49,6 +49,20 @@ entry.target.classList.add('visible');
 });
 }, { threshold: 0.1 });
 sections.forEach(s => observer.observe(s));
+const titles = document.querySelectorAll('.section-title, .notebook-title');
+titles.forEach(title => {
+const text = title.innerText;
+title.innerText = '';
+let charIndex = 0;
+const typeInterval = setInterval(() => {
+if (charIndex < text.length) {
+title.innerText += text.charAt(charIndex);
+charIndex++;
+} else {
+clearInterval(typeInterval);
+}
+}, 50);
+});
 const pendant = document.getElementById('pendant');
 const thread = document.getElementById('thread');
 const necklace = document.getElementById('necklace');
