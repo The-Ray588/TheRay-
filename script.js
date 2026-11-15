@@ -188,4 +188,14 @@ prevY = trail.y;
 requestAnimationFrame(animateTrail);
 }
 animateTrail();
+const sectionsForGlow = document.querySelectorAll('.section');
+sectionsForGlow.forEach(section => {
+section.addEventListener('mousemove', e => {
+const rect = section.getBoundingClientRect();
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+section.style.setProperty('--mouse-x', `${x}px`);
+section.style.setProperty('--mouse-y', `${y}px`);
+});
+});
 });
