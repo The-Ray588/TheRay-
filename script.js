@@ -132,8 +132,8 @@ scrollTopBtn.classList.remove('show');
 scrollTopBtn.addEventListener('click', () => {
 window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-document.addEventListener('mousemove', (e) => {
 const stars = document.querySelectorAll('.star');
+document.addEventListener('mousemove', (e) => {
 stars.forEach(star => {
 const rect = star.getBoundingClientRect();
 const dist = Math.hypot(e.clientX - rect.left, e.clientY - rect.top);
@@ -146,4 +146,46 @@ star.style.background = '#fff';
 }
 });
 });
+const cursorDot = document.createElement('div');
+cursorDot.classList.add('cursor-dot');
+document.body.appendChild(cursorDot);
+const trails = [];
+const trailCount = 8;
+for (let i = 0; i < trailCount; i++) {
+const t = document.createElement('div');
+t.classList.add('cursor-trail');
+t.style.opacity = (1 - i / trailCount) * 0.7;
+t.style.width = (6 - i * 0.5) + 'px';
+t.style.height = (6 - i * 0.5) + 'px';
+document.body.appendChild(t);
+trails.push({ el: t, x: 0, y: 0 });
+}
+let cursorX = window.innerWidth / 2;
+let cursorY = window.innerHeight / 2;
+document.addEventListener('mousemove', (e) => {
+cursorX = e.clientX;
+cursorY = e.clientY;
+cursorDot.style.left = cursorX + 'px';
+cursorDot.style.top = cursorY + 'px';
+});
+document.addEventListener('mousedown', () => {
+cursorDot.classList.add('clicking');
+});
+document.addEventListener('mouseup', () => {
+cursorDot.classList.remove('clicking');
+});
+function animateTrail() {
+let prevX = cursorX;
+let prevY = cursorY;
+trails.forEach((trail, index) => {
+trail.x += (prevX - trail.x) * 0.3;
+trail.y += (prevY - trail.y) * 0.3;
+trail.el.style.left = trail.x + 'px';
+trail.el.style.top = trail.y + 'px';
+prevX = trail.x;
+prevY = trail.y;
+});
+requestAnimationFrame(animateTrail);
+}
+animateTrail();
 });
