@@ -1,15 +1,20 @@
 ```markdown
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7b00,100:1a0b0b&height=200&section=header&text=Мысли%20Рэйя&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7b00,50:cc5500,100:1a0b0b&height=220&section=header&text=Мысли%20Рэйя&fontSize=60&fontColor=ffffff&animation=twinkling&fontAlignY=40&desc=Космос%20%C2%B7%20Дневник%20%C2%B7%20Код&descAlignY=60&descSize=18" width="100%" />
 
-### 🌌 *Интерактивный био-сайт в стиле «космос + личный дневник»*
+<br>
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Comfortaa&weight=700&size=24&pause=1000&color=FF7B00&center=true&vCenter=true&width=600&lines=Интерактивный+био-сайт;Космос+%2B+личный+дневник;Сделано+с+%E2%9D%A4%EF%B8%8F+и+бессонными+ночами)](https://git.io/typing-svg)
+
+<br>
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/ru/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/ru/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/ru/docs/Web/JavaScript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff7b00?style=for-the-badge)](LICENSE)
-[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)]()
+
+<br>
 
 > *«Не судите строго, я только учусь быть легендой».*
 
@@ -116,4 +121,3 @@ https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&log
 
 </div>
 ```
-
