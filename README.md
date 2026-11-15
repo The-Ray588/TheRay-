@@ -1,41 +1,89 @@
-```markdown
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7b00,50:cc5500,100:1a0b0b&height=220&section=header&text=Мысли%20Рэйя&fontSize=60&fontColor=ffffff&animation=twinkling&fontAlignY=40&desc=Космос%20%C2%B7%20Дневник%20%C2%B7%20Код&descAlignY=60&descSize=18" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7b00,30:cc5500,70:1a0b0b,100:0d0504&height=250&section=header&text=МЫСЛИ%20РЭЙЯ&fontSize=70&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=КОСМОС%20%C2%B7%20ДНЕВНИК%20%C2%B7%20КОД&descAlignY=58&descSize=20" width="100%" />
 
 <br>
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Comfortaa&weight=700&size=24&pause=1000&color=FF7B00&center=true&vCenter=true&width=600&lines=Интерактивный+био-сайт;Космос+%2B+личный+дневник;Сделано+с+%E2%9D%A4%EF%B8%8F+и+бессонными+ночами)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Comfortaa&weight=700&size=26&pause=800&color=FF7B00&center=true&vCenter=true&width=650&lines=Интерактивный+био-сайт;От+холодного+космоса+к+тёплому+дневнику;Сделано+с+%E2%9D%A4%EF%B8%8F+и+бессонными+ночами)](https://git.io/typing-svg)
 
 <br>
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/ru/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/ru/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/ru/docs/Web/JavaScript)
-[![License: MIT](https://img.shields.io/badge/License-MIT-ff7b00?style=for-the-badge)](LICENSE)
+<a href="https://developer.mozilla.org/ru/docs/Web/HTML"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"></a>
+<a href="https://developer.mozilla.org/ru/docs/Web/CSS"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"></a>
+<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-ff7b00?style=for-the-badge" alt="MIT"></a>
 
-<br>
+<br><br>
 
-> *«Не судите строго, я только учусь быть легендой».*
+> ### *«Не судите строго, я только учусь быть легендой».*
 
 </div>
 
 ---
 
-## 🚀 О проекте
-
-Это не просто сайт-визитка. Это **путешествие** от холодного космоса к тёплому личному дневнику. 
-Каждая деталь продумана: от физики кулона до шлейфа за курсором.
-
 <div align="center">
 
-| 🌠 **3D-кулон** | 🌌 **Живой космос** | 🖱️ **Кастомный курсор** |
-| :---: | :---: | :---: |
-| Реагирует на мышь, физика маятника | Мерцающие звёзды, кометы, искры | Оранжевая искра с шлейфом |
-| 📜 **Параллакс** | 🧭 **Боковое меню** | 📓 **Блокнот** |
-| Смена цвета от заката к ночи | Быстрая навигация по секциям | «Мысли Рэйя» с мемами |
+## 🌠 Что это?
+
+**Не просто сайт-визитка.** Это путешествие от холодного космоса к тёплому личному дневнику.  
+Каждая деталь продумана: от физики кулона до шлейфа за курсором.
 
 </div>
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+### 🌌 3D-кулон
+Реагирует на мышь  
+Физика маятника  
+Блик по металлу
+
+</td>
+<td align="center" width="33%">
+
+### ☄️ Живой космос
+Мерцающие звёзды  
+Падающие кометы  
+Летящие искры
+
+</td>
+<td align="center" width="33%">
+
+### 🖱️ Курсор-искра
+Оранжевый след  
+Вспышка при клике  
+Отключается на мобилках
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+### 📜 Параллакс
+Смена цвета при скролле  
+От заката к ночи  
+Плавные переходы
+
+</td>
+<td align="center" width="33%">
+
+### 🧭 Навигация
+Боковое меню  
+Быстрый скролл  
+Кнопка «Наверх»
+
+</td>
+<td align="center" width="33%">
+
+### 📓 Блокнот
+Цитаты и мемы  
+Эффект «возвращения»  
+Тёплый вайб
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -98,14 +146,36 @@ https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram htt
 
 ---
 
+❓ FAQ
+
+<details>
+<summary><b>🎨 Можно ли использовать этот код в своих проектах?</b></summary>
+<br>
+Да! Проект распространяется под лицензией MIT. Ты можешь брать код, менять его, использовать в личных и коммерческих целях. Главное — сохранить упоминание авторов.
+</details>
+
+<details>
+<summary><b>📱 Сайт работает на телефоне?</b></summary>
+<br>
+Да, вёрстка адаптивная. Кастомный курсор на мобильных отключается автоматически, чтобы не мешать тыкать пальцем.
+</details>
+
+<details>
+<summary><b>⚡ Почему нет React/Vue?</b></summary>
+<br>
+Потому что для такого проекта они не нужны. Чистый HTML/CSS/JS грузится быстрее и не тянет за собой кучу зависимостей.
+</details>
+
+---
+
 📬 Связаться со мной
 
 <div align="center">
 
-https://img.shields.io/badge/Telegram-Арты-26A5E4?style=for-the-badge&logo=telegram
-https://img.shields.io/badge/Telegram-Жизнь-26A5E4?style=for-the-badge&logo=telegram
-https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok
-https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white
+<a href="https://t.me/reychik_sketch"><img src="https://img.shields.io/badge/Telegram-Арты-26A5E4?style=for-the-badge&logo=telegram" alt="Telegram Art"></a>
+<a href="https://t.me/c0l_dzx"><img src="https://img.shields.io/badge/Telegram-Жизнь-26A5E4?style=for-the-badge&logo=telegram" alt="Telegram Life"></a>
+<a href="https://vt.tiktok.com/ZSpbuf1b5/"><img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok" alt="TikTok"></a>
+<a href="https://discord.gg/9K3yqP7H"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
 
 </div>
 
@@ -115,7 +185,7 @@ https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&log
 
 🌟 Если тебе понравился проект — поставь ⭐ этому репозиторию!
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0b0b,100:ff7b00&height=100&section=footer" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d0504,50:ff7b00,100:1a0b0b&height=120&section=footer" width="100%" />
 
 © 2026 TheRayDev & StepanCode. Сделано с ❤️ и бессонными ночами.
 
