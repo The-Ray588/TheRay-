@@ -93,7 +93,9 @@ if(orbs.length > 0) {
 orbs[0].style.background = `rgba(255, 123, 0, ${0.15 - scrollPercent * 0.1})`;
 orbs[0].style.transform = `scale(${1 + scrollPercent * 0.5})`;
 }
+if (!document.body.classList.contains('portal-active')) {
 document.body.style.background = `radial-gradient(circle at 50% ${20 + scrollPercent * 30}%, rgba(61, 27, 10, ${1 - scrollPercent * 0.3}) 0%, #0d0504 100%)`;
+}
 });
 function createShootingStar() {
 const star = document.createElement('div');
@@ -198,4 +200,17 @@ section.style.setProperty('--mouse-x', `${x}px`);
 section.style.setProperty('--mouse-y', `${y}px`);
 });
 });
+const notebookSection = document.querySelector('.notebook-section');
+const portalObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+document.body.classList.add('portal-active');
+} else if (!entry.isIntersecting) {
+document.body.classList.remove('portal-active');
+}
+});
+}, { threshold: [0, 0.4, 0.8] });
+if (notebookSection) {
+portalObserver.observe(notebookSection);
+}
 });
