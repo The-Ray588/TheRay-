@@ -1,147 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мысли Рэйя</title>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg-dark:#1a0b0b;--bg-orange:#2c1206;--accent:#ff7b00;--text-light:#f4e6d8;--text-dim:#a68a78;--font-main:'Comfortaa',sans-serif;--font-hand:'Caveat',cursive;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:radial-gradient(circle at 50% 20%,#3d1b0a 0%,#0d0504 100%);color:var(--text-light);font-family:var(--font-main);overflow-x:hidden;line-height:1.6;min-height:100vh;transition:background 1.5s ease;}
-.space-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;pointer-events:none;}
-.star{position:absolute;background:#fff;border-radius:50%;opacity:.6;box-shadow:0 0 10px rgba(255,255,255,.5);}
-.glow-orb{position:absolute;border-radius:50%;background:rgba(255,123,0,.15);filter:blur(80px);pointer-events:none;transition:background 2s ease;}
-.content-wrapper{position:relative;max-width:1000px;margin:0 auto;padding:40px 20px;display:flex;flex-direction:column;align-items:center;min-height:100vh;}
-.necklace-container{position:relative;display:flex;flex-direction:column;align-items:center;margin-bottom:50px;z-index:10;}
-.thread{width:4px;height:120px;background:linear-gradient(to bottom,transparent,#8b5a2b,#d4a373);border-radius:2px;box-shadow:0 0 5px rgba(212,163,115,.5);transform-origin:top center;transition:transform .1s ease-out;}
-.pendant{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffb347,#cc5500,#662200);border:4px solid #d4a373;box-shadow:0 0 30px rgba(255,123,0,.6),inset 0 0 20px rgba(0,0,0,.5);display:flex;justify-content:center;align-items:center;position:relative;transition:transform .1s ease-out;cursor:pointer;transform-style:preserve-3d;}
-.pendant::after{content:'✦';font-size:40px;color:#f4e6d8;text-shadow:0 0 15px #fff;}
-.pendant::before{content:'';position:absolute;top:5%;left:10%;width:40%;height:20%;background:linear-gradient(to bottom,rgba(255,255,255,.8),rgba(255,255,255,0));border-radius:50%;transform:rotate(-45deg);opacity:.7;transition:transform .2s ease;}
-.section{width:100%;margin-bottom:80px;background:rgba(26,11,11,.7);backdrop-filter:blur(10px);border:1px solid rgba(255,123,0,.3);border-radius:15px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,.5);position:relative;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
-.section.visible{opacity:1;transform:translateY(0);}
-.section-title{font-family:var(--font-hand);font-size:2.5rem;color:var(--accent);margin-bottom:20px;text-shadow:0 0 10px rgba(255,123,0,.3);border-bottom:1px dashed rgba(255,123,0,.4);display:inline-block;padding-bottom:5px;}
-.about-text p{margin-bottom:15px;font-size:1.1rem;}
-.about-text .quote{font-family:var(--font-hand);font-size:1.6rem;color:#ffb347;text-align:center;margin-top:20px;font-style:italic;}
-.friends-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.friend-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,123,0,.2);border-radius:10px;padding:15px;transition:transform .3s ease,background .3s ease;position:relative;}
-.friend-card:hover{transform:translateY(-5px) rotate(1deg);background:rgba(255,123,0,.1);}
-.friend-name{font-weight:bold;font-size:1.2rem;color:#ffb347;margin-bottom:5px;display:flex;align-items:center;gap:10px;}
-.friend-desc{font-size:.9rem;color:var(--text-dim);}
-.hobby-list{list-style:none;}
-.hobby-item{font-size:1.1rem;margin-bottom:15px;padding-left:30px;position:relative;}
-.hobby-item::before{content:'✦';position:absolute;left:0;color:var(--accent);font-size:1.2rem;}
-.hobby-desc{font-size:.9rem;color:var(--text-dim);margin-left:5px;}
-.social-links{display:flex;flex-direction:column;gap:15px;}
-.social-btn{display:flex;align-items:center;text-decoration:none;color:var(--text-light);background:rgba(255,123,0,.1);border:1px solid rgba(255,123,0,.3);padding:15px 20px;border-radius:10px;transition:all .3s ease;}
-.social-btn:hover{background:rgba(255,123,0,.25);transform:translateX(10px);border-color:var(--accent);box-shadow:0 0 15px rgba(255,123,0,.3);}
-.social-icon{font-size:1.5rem;margin-right:15px;}
-.social-info{display:flex;flex-direction:column;}
-.social-name{font-weight:bold;color:#ffb347;}
-.social-desc{font-size:.8rem;color:var(--text-dim);}
-.dev-info{text-align:center;font-size:1.1rem;}
-.dev-name{font-weight:bold;color:var(--accent);}
-.dev-seal{display:inline-block;margin-top:20px;padding:10px 20px;border:2px solid #ffb347;border-radius:50%;font-family:var(--font-hand);font-size:1.5rem;color:#ffb347;transform:rotate(-5deg);box-shadow:0 0 10px rgba(255,179,71,.3);}
-.notebook-section{background:#e8d5b5;color:#3e2723;border:10px solid #5d4037;border-radius:5px;box-shadow:0 20px 50px rgba(0,0,0,.8);padding:40px;position:relative;margin-top:50px;transform:scale(0.95);transition:transform 1s ease, background 1s ease;}
-.notebook-section.visible{transform:scale(1);}
-.notebook-title{font-family:var(--font-hand);font-size:3.5rem;text-align:center;color:#3e2723;margin-bottom:30px;border-bottom:2px solid #3e2723;padding-bottom:10px;}
-.notebook-content{display:flex;flex-direction:column;gap:20px;}
-.quote-sticker{background:#fff9c4;padding:15px;border-radius:5px;box-shadow:2px 2px 5px rgba(0,0,0,.2);font-family:var(--font-hand);font-size:1.6rem;transform:rotate(-1deg);border-left:5px solid #ff9800;transition:transform .3s ease;}
-.quote-sticker:hover{transform:rotate(0deg) scale(1.02);}
-.meme-sticker{background:#e1f5fe;padding:15px;border-radius:5px;box-shadow:2px 2px 5px rgba(0,0,0,.2);transform:rotate(1.5deg);border-left:5px solid #03a9f4;display:flex;align-items:center;gap:10px;font-family:var(--font-main);transition:transform .3s ease;}
-.meme-sticker:hover{transform:rotate(0deg) scale(1.02);}
-@media (max-width:768px){.section-title{font-size:2rem;}.friends-grid{grid-template-columns:1fr;}.notebook-title{font-size:2.5rem;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мысли Рэйя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="space-bg" id="spaceBg">
-<div class="glow-orb" style="top:10%;left:20%;width:300px;height:300px;"></div>
-<div class="glow-orb" style="bottom:20%;right:10%;width:400px;height:400px;background:rgba(200,50,0,.1);"></div>
-</div>
-<div class="content-wrapper">
-<div class="necklace-container" id="necklace">
-<div class="thread" id="thread"></div>
-<div class="pendant" id="pendant"></div>
-</div>
-<div class="section" id="about">
-<h2 class="section-title">О себе</h2>
-<div class="about-text">
-<p><strong>Привет, я Рэй (или просто Макс).</strong></p>
-<p>Мне 15 лет, и я обитаю в Псковской области — краю лесов, озёр и тишины. Родился <strong>9 декабря</strong>, так что зима — моя стихия. Пока все ждут лета, я жду первого снега и запаха мандаринов.</p>
-<p>Я тот самый человек, который может полночи залипать в любимую игру, а утром рассказывать друзьям про странные сны. Люблю зависать с брошками, копаться в своих хобби и просто ловить вайб момента. Могу долго молчать, а потом выдать такую шутку, что все упадут.</p>
-<p>В этом блокноте — мой маленький мир: люди, которые мне дороги, вещи, от которых горят глаза, и места, где меня можно найти. Добро пожаловать. Располагайся, тут не кусаются.</p>
-<div class="quote">«Не судите строго, я только учусь быть легендой».</div>
-</div>
-</div>
-<div class="section" id="friends">
-<h2 class="section-title">Друзья и брошки</h2>
-<div class="friends-grid">
-<div class="friend-card"><div class="friend-name">Катзи</div><div class="friend-desc">Самый лучший переживающий человек</div></div>
-<div class="friend-card"><div class="friend-name">Лисенок</div><div class="friend-desc">Мой любимец</div></div>
-<div class="friend-card"><div class="friend-name">Флоузи</div><div class="friend-desc">Да, мы фанаты «Класса Превосходства»</div></div>
-<div class="friend-card"><div class="friend-name">Дастик</div><div class="friend-desc">Да вообще хороший бро</div></div>
-<div class="friend-card"><div class="friend-name">Мявка</div><div class="friend-desc">Вечно называет меня Мышонком</div></div>
-<div class="friend-card"><div class="friend-name">Миша Драгон</div><div class="friend-desc">Ой, брошка мой</div></div>
-<div class="friend-card"><div class="friend-name">Лимонадеч</div><div class="friend-desc">Дружбан</div></div>
-</div>
-</div>
-<div class="section" id="hobbies">
-<h2 class="section-title">Хобби</h2>
-<ul class="hobby-list">
-<li class="hobby-item">🏃 Спорт <span class="hobby-desc">— Держу себя в форме, чтобы потом весь день сидеть за компом.</span></li>
-<li class="hobby-item">🎨 Арты <span class="hobby-desc">— Рисую, когда в голову приходит идея (или когда очень надо).</span></li>
-<li class="hobby-item">💻 Кодинг <span class="hobby-desc">— Программирую сайты. Да, этот сайт я тоже сделал.</span></li>
-<li class="hobby-item">⛏️ Minecraft: «Парадокс 3: Истина» <span class="hobby-desc">— Участвую в этом проекте. Это не просто игра, это целая история.</span></li>
-</ul>
-</div>
-<div class="section" id="socials">
-<h2 class="section-title">Ссылки на соцсети</h2>
-<div class="social-links">
-<a href="https://t.me/reychik_sketch" target="_blank" class="social-btn"><span class="social-icon">🎨</span><div class="social-info"><span class="social-name">Telegram (Арты)</span><span class="social-desc">Мое творчество, скетчи и всё, что рисую</span></div></a>
-<a href="https://t.me/c0l_dzx" target="_blank" class="social-btn"><span class="social-icon">🌌</span><div class="social-info"><span class="social-name">Telegram (Жизнь)</span><span class="social-desc">Тут просто моя жизнь, мысли и рандом</span></div></a>
-<a href="https://vt.tiktok.com/ZSpbuf1b5/" target="_blank" class="social-btn"><span class="social-icon">🎵</span><div class="social-info"><span class="social-name">TikTok</span><span class="social-desc">Видео, моменты, вайб</span></div></a>
-<a href="https://discord.gg/9K3yqP7H" target="_blank" class="social-btn"><span class="social-icon">💬</span><div class="social-info"><span class="social-name">Discord</span><span class="social-desc">Для связи, игр и поболтать</span></div></a>
-</div>
-</div>
-<div class="section" id="developers">
-<h2 class="section-title">Кто разрабатывал сайт</h2>
-<div class="dev-info">
-<p><span class="dev-name">TheRayDev</span> — Идейный вдохновитель, дизайнер и главный по коду (это я).</p>
-<p><span class="dev-name">StepanCode</span> — Мой брат и верный соратник в мире кода.</p>
-<div class="dev-seal">Сделано с ❤️</div>
-</div>
-</div>
-<div class="section notebook-section" id="notebook">
-<h2 class="notebook-title">Мысли Рэйя</h2>
-<div class="notebook-content">
-<div class="quote-sticker">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</div>
-<div class="meme-sticker" style="display:flex;justify-content:center;text-align:center;font-size:1.2rem;"><span>😎 Когда код работает, но ты не знаешь почему. Не трогай его!</span></div>
-<div class="quote-sticker" style="transform:rotate(2deg);background:#ffe0b2;">«Мышонок в безопасности, пока рядом Мявка».</div>
-<div class="meme-sticker" style="display:flex;justify-content:center;text-align:center;font-size:1.2rem;transform:rotate(-1deg);"><span>💻 Пытаюсь понять, почему кулон летает, а не висит.</span></div>
-</div>
-</div>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-const bg = document.getElementById('spaceBg');
-for(let i=0;i<150;i++){const s=document.createElement('div');s.classList.add('star');const size=Math.random()*3+1;s.style.width=size+'px';s.style.height=size+'px';s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';s.style.animation=`twinkle ${Math.random()*3+2}s infinite alternate`;s.style.animationDelay=Math.random()*5+'s';bg.appendChild(s);}
-const style=document.createElement('style');style.innerHTML=`@keyframes twinkle{0%{opacity:.2;transform:scale(.8);}100%{opacity:1;transform:scale(1.2);}}@keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:0;}10%{opacity:1;}100%{transform:translateY(-100vh) scale(0.5);opacity:0;}}`;document.head.appendChild(style);
-for(let i=0;i<20;i++){const p=document.createElement('div');p.style.position='absolute';p.style.width=Math.random()*4+2+'px';p.style.height=p.style.width;p.style.background='#ff7b00';p.style.borderRadius='50%';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';p.style.animation=`floatUp ${Math.random()*10+10}s linear infinite`;p.style.animationDelay=Math.random()*10+'s';p.style.opacity='0.6';p.style.boxShadow='0 0 10px #ff7b00';bg.appendChild(p);}
-const sections=document.querySelectorAll('.section');
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});},{threshold:0.1});
-sections.forEach(s=>observer.observe(s));
-const pendant=document.getElementById('pendant');const thread=document.getElementById('thread');const necklace=document.getElementById('necklace');
-let mouseX=0,mouseY=0;let targetX=0,targetY=0;let currentX=0,currentY=0;
-document.addEventListener('mousemove',(e)=>{const rect=necklace.getBoundingClientRect();const centerX=rect.left+rect.width/2;const centerY=rect.top+rect.height/2;mouseX=(e.clientX-centerX)/50;mouseY=(e.clientY-centerY)/50;});
-function animate(){targetX+= (mouseX-targetX)*0.1;targetY+= (mouseY-targetY)*0.1;currentX=targetX;currentY=targetY;
-pendant.style.transform=`rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
-thread.style.transform=`rotate(${currentX*0.5}deg)`;
-requestAnimationFrame(animate);}
-animate();
-const glow=document.createElement('div');glow.style.position='fixed';glow.style.width='300px';glow.style.height='300px';glow.style.borderRadius='50%';glow.style.background='radial-gradient(circle, rgba(255,123,0,0.15) 0%, rgba(255,123,0,0) 70%)';glow.style.pointerEvents='none';glow.style.zIndex='-1';glow.style.transform='translate(-50%,-50%)';document.body.appendChild(glow);
-document.addEventListener('mousemove',(e)=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
-window.addEventListener('scroll',()=>{const scrollPercent=window.scrollY/(document.body.scrollHeight-window.innerHeight);const orbs=document.querySelectorAll('.glow-orb');if(orbs.length>0){orbs[0].style.background=`rgba(255, 123, 0, ${0.15 - scrollPercent*0.1})`;orbs[0].style.transform=`scale(${1+scrollPercent*0.5})`;}document.body.style.background=`radial-gradient(circle at 50% ${20+scrollPercent*30}%, rgba(61, 27, 10, ${1-scrollPercent*0.3}) 0%, #0d0504 100%)`;});
-});
-</script>
+
+    <div class="space-bg" id="spaceBg">
+        <div class="glow-orb" style="top:10%;left:20%;width:300px;height:300px;"></div>
+        <div class="glow-orb" style="bottom:20%;right:10%;width:400px;height:400px;background:rgba(200,50,0,.1);"></div>
+    </div>
+
+    <div class="content-wrapper">
+        
+        <div class="necklace-container" id="necklace">
+            <div class="thread" id="thread"></div>
+            <div class="pendant" id="pendant"></div>
+        </div>
+
+        <div class="section" id="about">
+            <h2 class="section-title">О себе</h2>
+            <div class="about-text">
+                <p><strong>Привет, я Рэй (или просто Макс).</strong></p>
+                <p>Мне 15 лет, и я обитаю в Псковской области — краю лесов, озёр и тишины. Родился <strong>9 декабря</strong>, так что зима — моя стихия. Пока все ждут лета, я жду первого снега и запаха мандаринов.</p>
+                <p>Я тот самый человек, который может полночи залипать в любимую игру, а утром рассказывать друзьям про странные сны. Люблю зависать с брошками, копаться в своих хобби и просто ловить вайб момента. Могу долго молчать, а потом выдать такую шутку, что все упадут.</p>
+                <p>В этом блокноте — мой маленький мир: люди, которые мне дороги, вещи, от которых горят глаза, и места, где меня можно найти. Добро пожаловать. Располагайся, тут не кусаются.</p>
+                <div class="quote">«Не судите строго, я только учусь быть легендой».</div>
+            </div>
+        </div>
+
+        <div class="section" id="friends">
+            <h2 class="section-title">Друзья и брошки</h2>
+            <div class="friends-grid">
+                <div class="friend-card"><div class="friend-name">Катзи</div><div class="friend-desc">Самый лучший переживающий человек</div></div>
+                <div class="friend-card"><div class="friend-name">Лисенок</div><div class="friend-desc">Мой любимец</div></div>
+                <div class="friend-card"><div class="friend-name">Флоузи</div><div class="friend-desc">Да, мы фанаты «Класса Превосходства»</div></div>
+                <div class="friend-card"><div class="friend-name">Дастик</div><div class="friend-desc">Да вообще хороший бро</div></div>
+                <div class="friend-card"><div class="friend-name">Мявка</div><div class="friend-desc">Вечно называет меня Мышонком</div></div>
+                <div class="friend-card"><div class="friend-name">Миша Драгон</div><div class="friend-desc">Ой, брошка мой</div></div>
+                <div class="friend-card"><div class="friend-name">Лимонадеч</div><div class="friend-desc">Дружбан</div></div>
+            </div>
+        </div>
+
+        <div class="section" id="hobbies">
+            <h2 class="section-title">Хобби</h2>
+            <ul class="hobby-list">
+                <li class="hobby-item">🏃 Спорт <span class="hobby-desc">— Держу себя в форме, чтобы потом весь день сидеть за компом.</span></li>
+                <li class="hobby-item">🎨 Арты <span class="hobby-desc">— Рисую, когда в голову приходит идея (или когда очень надо).</span></li>
+                <li class="hobby-item">💻 Кодинг <span class="hobby-desc">— Программирую сайты. Да, этот сайт я тоже сделал.</span></li>
+                <li class="hobby-item">⛏️ Minecraft: «Парадокс 3: Истина» <span class="hobby-desc">— Участвую в этом проекте. Это не просто игра, это целая история.</span></li>
+            </ul>
+        </div>
+
+        <div class="section" id="socials">
+            <h2 class="section-title">Ссылки на соцсети</h2>
+            <div class="social-links">
+                <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn"><span class="social-icon">🎨</span><div class="social-info"><span class="social-name">Telegram (Арты)</span><span class="social-desc">Мое творчество, скетчи и всё, что рисую</span></div></a>
+                <a href="https://t.me/c0l_dzx" target="_blank" class="social-btn"><span class="social-icon">🌌</span><div class="social-info"><span class="social-name">Telegram (Жизнь)</span><span class="social-desc">Тут просто моя жизнь, мысли и рандом</span></div></a>
+                <a href="https://vt.tiktok.com/ZSpbuf1b5/" target="_blank" class="social-btn"><span class="social-icon">🎵</span><div class="social-info"><span class="social-name">TikTok</span><span class="social-desc">Видео, моменты, вайб</span></div></a>
+                <a href="https://discord.gg/9K3yqP7H" target="_blank" class="social-btn"><span class="social-icon">💬</span><div class="social-info"><span class="social-name">Discord</span><span class="social-desc">Для связи, игр и поболтать</span></div></a>
+            </div>
+        </div>
+
+        <div class="section" id="developers">
+            <h2 class="section-title">Кто разрабатывал сайт</h2>
+            <div class="dev-info">
+                <p><span class="dev-name">TheRayDev</span> — Идейный вдохновитель, дизайнер и главный по коду (это я).</p>
+                <p><span class="dev-name">StepanCode</span> — Мой брат и верный соратник в мире кода.</p>
+                <div class="dev-seal">Сделано с ❤️</div>
+            </div>
+        </div>
+
+        <div class="section notebook-section" id="notebook">
+            <h2 class="notebook-title">Мысли Рэйя</h2>
+            <div class="notebook-content">
+                <div class="quote-sticker">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</div>
+                <div class="meme-sticker" style="display:flex;justify-content:center;text-align:center;font-size:1.2rem;"><span>😎 Когда код работает, но ты не знаешь почему. Не трогай его!</span></div>
+                <div class="quote-sticker" style="transform:rotate(2deg);background:#ffe0b2;">«Мышонок в безопасности, пока рядом Мявка».</div>
+                <div class="meme-sticker" style="display:flex;justify-content:center;text-align:center;font-size:1.2rem;transform:rotate(-1deg);"><span>💻 Пытаюсь понять, почему кулон летает, а не висит.</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
