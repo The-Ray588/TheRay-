@@ -1,117 +1,100 @@
-cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Мысли Рэйя</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Russo+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мысли Рэйя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="sky" aria-hidden="true"></canvas>
-<div class="cur-ring" aria-hidden="true"></div>
-<div class="cur-dot" aria-hidden="true"></div>
 
-<header class="hero">
-  <div class="badge-col">
-    <div class="pend">
-      <div class="swing" id="swing">
-        <div class="string"></div>
-        <div class="badge" id="badge" tabindex="0" role="button" aria-label="Дёрнуть бейдж">
-          <span class="hole"></span>
-          <b class="b-name">РЭЙ</b>
-          <span class="b-role">TheRayDev</span>
-          <span class="b-bar"><i></i></span>
-          <span class="b-id">легенда: загрузка…</span>
+    <canvas id="constellationCanvas"></canvas>
+
+    <nav class="tabs-container">
+        <a href="#about" class="tab active">О себе</a>
+        <a href="#friends" class="tab">Друзья</a>
+        <a href="#hobbies" class="tab">Хобби</a>
+        <a href="#socials" class="tab">Соцсети</a>
+        <a href="#developers" class="tab">Разработчики</a>
+        <a href="#notebook" class="tab">Блокнот</a>
+    </nav>
+
+    <div class="content-wrapper">
+        
+        <div class="necklace-container" id="necklaceContainer">
+            <div class="thread" id="thread">
+                <div class="pendant" id="pendant">
+                    <div class="pendant-inner">✦</div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="section" id="about">
+            <h2 class="section-title">О себе</h2>
+            <div class="about-text">
+                <p><strong>Привет, я Рэй (или просто Макс).</strong></p>
+                <p>Мне 15 лет, и я обитаю в Псковской области — краю лесов, озёр и тишины. Родился <strong>9 декабря</strong>, так что зима — моя стихия. Пока все ждут лета, я жду первого снега и запаха мандаринов.</p>
+                <p>Я тот самый человек, который может полночи залипать в любимую игру, а утром рассказывать друзьям про странные сны. Люблю зависать с брошками, копаться в своих хобби и просто ловить вайб момента. Могу долго молчать, а потом выдать такую шутку, что все упадут.</p>
+                <p>В этом блокноте — мой маленький мир: люди, которые мне дороги, вещи, от которых горят глаза, и места, где меня можно найти. Добро пожаловать. Располагайся, тут не кусаются.</p>
+                <div class="quote">«Не судите строго, я только учусь быть легендой».</div>
+            </div>
+        </div>
+
+        <div class="section" id="friends">
+            <h2 class="section-title">Друзья и брошки</h2>
+            <div class="friends-grid">
+                <div class="friend-card"><div class="friend-name">Катзи</div><div class="friend-desc">Самый лучший переживающий человек</div></div>
+                <div class="friend-card"><div class="friend-name">Лисенок</div><div class="friend-desc">Мой любимец</div></div>
+                <div class="friend-card"><div class="friend-name">Флоузи</div><div class="friend-desc">Да, мы фанаты «Класса Превосходства»</div></div>
+                <div class="friend-card"><div class="friend-name">Дастик</div><div class="friend-desc">Да вообще хороший бро</div></div>
+                <div class="friend-card"><div class="friend-name">Мявка</div><div class="friend-desc">Вечно называет меня Мышонком</div></div>
+                <div class="friend-card"><div class="friend-name">Миша Драгон</div><div class="friend-desc">Ой, брошка мой</div></div>
+                <div class="friend-card"><div class="friend-name">Лимонадеч</div><div class="friend-desc">Дружбан</div></div>
+            </div>
+        </div>
+
+        <div class="section" id="hobbies">
+            <h2 class="section-title">Хобби</h2>
+            <ul class="hobby-list">
+                <li class="hobby-item">🏃 Спорт <span class="hobby-desc">— Держу себя в форме, чтобы потом весь день сидеть за компом.</span></li>
+                <li class="hobby-item">🎨 Арты <span class="hobby-desc">— Рисую, когда в голову приходит идея (или когда очень надо).</span></li>
+                <li class="hobby-item">💻 Кодинг <span class="hobby-desc">— Программирую сайты. Да, этот сайт я тоже сделал.</span></li>
+                <li class="hobby-item">⛏️ Minecraft: «Парадокс 3: Истина» <span class="hobby-desc">— Участвую в этом проекте. Это не просто игра, это целая история.</span></li>
+            </ul>
+        </div>
+
+        <div class="section" id="socials">
+            <h2 class="section-title">Ссылки на соцсети</h2>
+            <div class="social-links">
+                <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn"><span class="social-icon">🎨</span><div class="social-info"><span class="social-name">Telegram (Арты)</span><span class="social-desc">Мое творчество, скетчи и всё, что рисую</span></div></a>
+                <a href="https://t.me/c0l_dzx" target="_blank" class="social-btn"><span class="social-icon">🌌</span><div class="social-info"><span class="social-name">Telegram (Жизнь)</span><span class="social-desc">Тут просто моя жизнь, мысли и рандом</span></div></a>
+                <a href="https://vt.tiktok.com/ZSpbuf1b5/" target="_blank" class="social-btn"><span class="social-icon">🎵</span><div class="social-info"><span class="social-name">TikTok</span><span class="social-desc">Видео, моменты, вайб</span></div></a>
+                <a href="https://discord.gg/9K3yqP7H" target="_blank" class="social-btn"><span class="social-icon">💬</span><div class="social-info"><span class="social-name">Discord</span><span class="social-desc">Для связи, игр и поболтать</span></div></a>
+            </div>
+        </div>
+
+        <div class="section" id="developers">
+            <h2 class="section-title">Кто разрабатывал сайт</h2>
+            <div class="dev-info">
+                <p><span class="dev-name">TheRayDev</span> — Идейный вдохновитель, дизайнер и главный по коду (это я).</p>
+                <p><span class="dev-name">StepanCode</span> — Мой брат и верный соратник в мире кода.</p>
+                <div class="dev-seal">Сделано с ❤️</div>
+            </div>
+        </div>
+
+        <div class="section notebook-section" id="notebook">
+            <h2 class="notebook-title">Мысли Рэйя</h2>
+            <div class="notebook-content">
+                <div class="quote-sticker">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</div>
+                <div class="meme-sticker"><span>😎 Когда код работает, но ты не знаешь почему. Не трогай его!</span></div>
+                <div class="quote-sticker" style="transform:rotate(2deg);background:#ffe0b2;">«Мышонок в безопасности, пока рядом Мявка».</div>
+                <div class="meme-sticker" style="transform:rotate(-1deg);"><span>💻 Пытаюсь понять, почему кулон летает, а не висит.</span></div>
+            </div>
+        </div>
+
     </div>
-    <p class="hint">Дёрни бейдж</p>
-  </div>
-  <div class="hero-text">
-    <h1 data-t="Мысли Рэйя">Мысли Рэйя</h1>
-    <p class="typed-line" aria-label="Привет, я Рэй (или просто Макс)"><span id="typed"></span></p>
-  </div>
-</header>
 
-<div class="tabs" role="tablist" aria-label="Разделы">
-  <button role="tab" id="t-about" data-tab="about" aria-controls="p-about">О себе</button>
-  <button role="tab" id="t-friends" data-tab="friends" aria-controls="p-friends">Друзья</button>
-  <button role="tab" id="t-hobbies" data-tab="hobbies" aria-controls="p-hobbies">Хобби</button>
-  <button role="tab" id="t-project" data-tab="project" aria-controls="p-project">Проект</button>
-  <button role="tab" id="t-socials" data-tab="socials" aria-controls="p-socials">Соцсети</button>
-  <button role="tab" id="t-notebook" data-tab="notebook" aria-controls="p-notebook">Блокнот</button>
-  <button role="tab" id="t-devs" data-tab="devs" aria-controls="p-devs">Разработчики</button>
-</div>
-
-<main>
-  <section class="panel" role="tabpanel" id="p-about" aria-labelledby="t-about">
-    <h2>О себе</h2>
-    <p>Я живу в краю лесов, озёр и тишины. Зима — моя стихия: пока все ждут лета, я жду первого снега и запаха мандаринов.</p>
-    <p>Я тот самый человек, который может полночи залипать в любимую игру, а утром рассказывать друзьям про странные сны. Люблю зависать с брошками, копаться в своих хобби и ловить вайб момента. Могу долго молчать, а потом выдать такую шутку, что все упадут.</p>
-    <p>В этом блокноте — мой маленький мир: люди, которые мне дороги, вещи, от которых горят глаза, и места, где меня можно найти. Располагайся, тут не кусаются.</p>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-friends" aria-labelledby="t-friends" hidden>
-    <h2>Друзья и брошки</h2>
-    <div class="grid">
-      <div class="card friend"><b>Катзи</b><span>Самый лучший переживающий человек</span></div>
-      <div class="card friend"><b>Лисенок</b><span>Мой любимец</span></div>
-      <div class="card friend"><b>Флоузи</b><span>Да, мы фанаты «Класса Превосходства»</span></div>
-      <div class="card friend"><b>Дастик</b><span>Да вообще хороший бро</span></div>
-      <div class="card friend"><b>Мявка</b><span>Вечно называет меня Мышонком</span></div>
-      <div class="card friend"><b>Миша Драгон</b><span>Ой, брошка мой</span></div>
-      <div class="card friend"><b>Лимонадеч</b><span>Дружбан</span></div>
-    </div>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-hobbies" aria-labelledby="t-hobbies" hidden>
-    <h2>Хобби</h2>
-    <div class="grid">
-      <div class="card hobby"><i>🏃</i><div><b>Спорт</b><span>Держу себя в форме, чтобы потом весь день сидеть за компом.</span></div></div>
-      <div class="card hobby"><i>🎨</i><div><b>Арты</b><span>Рисую, когда в голову приходит идея (или когда очень надо).</span></div></div>
-      <div class="card hobby"><i>💻</i><div><b>Кодинг</b><span>Программирую сайты. Да, этот сайт я тоже сделал.</span></div></div>
-    </div>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-project" aria-labelledby="t-project" hidden>
-    <h2>Мой проект</h2>
-    <div class="card project">
-      <h3>Minecraft: «Парадокс 3: Истина»</h3>
-      <p>Я участвую в этом проекте. Это не просто игра, а целая история.</p>
-    </div>
-    <p class="gap">Скетчи и всё, что я рисую, лежит в моём Telegram-канале.</p>
-    <a class="btn c" href="https://t.me/reychik_sketch" target="_blank" rel="noopener">Смотреть арты</a>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-socials" aria-labelledby="t-socials" hidden>
-    <h2>Соцсети</h2>
-    <div class="grid">
-      <a class="card social" href="https://t.me/reychik_sketch" target="_blank" rel="noopener"><b>🎨 Telegram: арты</b><span>Моё творчество, скетчи и всё, что рисую</span></a>
-      <a class="card social" href="https://t.me/c0l_dzx" target="_blank" rel="noopener"><b>🌌 Telegram: жизнь</b><span>Моя жизнь, мысли и рандом</span></a>
-      <a class="card social" href="https://vt.tiktok.com/ZSpbuf1b5/" target="_blank" rel="noopener"><b>🎵 TikTok</b><span>Видео, моменты, вайб</span></a>
-      <a class="card social" href="https://discord.gg/9K3yqP7H" target="_blank" rel="noopener"><b>💬 Discord</b><span>Для связи, игр и поболтать</span></a>
-    </div>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-notebook" aria-labelledby="t-notebook" hidden>
-    <h2>Мысли Рэйя</h2>
-    <p id="thought" class="thought" aria-live="polite">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</p>
-    <button class="btn" id="next" type="button">Следующая мысль</button>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-devs" aria-labelledby="t-devs" hidden>
-    <h2>Кто разрабатывал сайт</h2>
-    <div class="card"><b>TheRayDev</b> — идейный вдохновитель, дизайнер и главный по коду.</div>
-    <div class="card gap"><b>StepanCode</b> — мой брат и верный соратник в мире кода.</div>
-  </section>
-</main>
-
-<footer>Сделано с ❤️</footer>
+    <script src="script.js"></script>
 </body>
 </html>
-EOF
