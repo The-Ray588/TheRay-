@@ -1,230 +1,219 @@
-document.addEventListener('DOMContentLoaded', () => {
-const bg = document.getElementById('spaceBg');
-for(let i=0; i<150; i++) {
-const s = document.createElement('div');
-s.classList.add('star');
-const size = Math.random() * 3 + 1;
-s.style.width = size + 'px';
-s.style.height = size + 'px';
-s.style.left = Math.random() * 100 + 'vw';
-s.style.top = Math.random() * 100 + 'vh';
-s.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
-s.style.animationDelay = Math.random() * 5 + 's';
-bg.appendChild(s);
-}
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes twinkle {
-0% { opacity: .2; transform: scale(.8); }
-100% { opacity: 1; transform: scale(1.2); }
-}
-@keyframes floatUp {
-0% { transform: translateY(0) scale(1); opacity: 0; }
-10% { opacity: 1; }
-100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-}
-`;
-document.head.appendChild(style);
-for(let i=0; i<20; i++) {
-const p = document.createElement('div');
-p.style.position = 'absolute';
-p.style.width = Math.random() * 4 + 2 + 'px';
-p.style.height = p.style.width;
-p.style.background = '#ff7b00';
-p.style.borderRadius = '50%';
-p.style.left = Math.random() * 100 + 'vw';
-p.style.top = Math.random() * 100 + 'vh';
-p.style.animation = `floatUp ${Math.random() * 10 + 10}s linear infinite`;
-p.style.animationDelay = Math.random() * 10 + 's';
-p.style.opacity = '0.6';
-p.style.boxShadow = '0 0 10px #ff7b00';
-bg.appendChild(p);
-}
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-}
-});
-}, { threshold: 0.1 });
-sections.forEach(s => observer.observe(s));
-const titles = document.querySelectorAll('.section-title, .notebook-title');
-titles.forEach(title => {
-const text = title.innerText;
-title.innerText = '';
-let charIndex = 0;
-const typeInterval = setInterval(() => {
-if (charIndex < text.length) {
-title.innerText += text.charAt(charIndex);
-charIndex++;
-} else {
-clearInterval(typeInterval);
-}
-}, 50);
-});
-const pendant = document.getElementById('pendant');
-const thread = document.getElementById('thread');
-const necklace = document.getElementById('necklace');
-let mouseX = 0, mouseY = 0;
-let targetX = 0, targetY = 0;
-let currentX = 0, currentY = 0;
-document.addEventListener('mousemove', (e) => {
-const rect = necklace.getBoundingClientRect();
-const centerX = rect.left + rect.width / 2;
-const centerY = rect.top + rect.height / 2;
-mouseX = (e.clientX - centerX) / 50;
-mouseY = (e.clientY - centerY) / 50;
-});
-function animate() {
-targetX += (mouseX - targetX) * 0.1;
-targetY += (mouseY - targetY) * 0.1;
-currentX = targetX;
-currentY = targetY;
-pendant.style.transform = `rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
-thread.style.transform = `rotate(${currentX * 0.5}deg)`;
-requestAnimationFrame(animate);
-}
-animate();
-const glow = document.createElement('div');
-glow.style.position = 'fixed';
-glow.style.width = '300px';
-glow.style.height = '300px';
-glow.style.borderRadius = '50%';
-glow.style.background = 'radial-gradient(circle, rgba(255,123,0,0.15) 0%, rgba(255,123,0,0) 70%)';
-glow.style.pointerEvents = 'none';
-glow.style.zIndex = '-1';
-glow.style.transform = 'translate(-50%,-50%)';
-document.body.appendChild(glow);
-document.addEventListener('mousemove', (e) => {
-glow.style.left = e.clientX + 'px';
-glow.style.top = e.clientY + 'px';
-});
-window.addEventListener('scroll', () => {
-const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-const orbs = document.querySelectorAll('.glow-orb');
-if(orbs.length > 0) {
-orbs[0].style.background = `rgba(255, 123, 0, ${0.15 - scrollPercent * 0.1})`;
-orbs[0].style.transform = `scale(${1 + scrollPercent * 0.5})`;
-}
-if (!document.body.classList.contains('portal-active')) {
-document.body.style.background = `radial-gradient(circle at 50% ${20 + scrollPercent * 30}%, rgba(61, 27, 10, ${1 - scrollPercent * 0.3}) 0%, #0d0504 100%)`;
-}
-});
-function createShootingStar() {
-const star = document.createElement('div');
-star.style.position = 'absolute';
-star.style.width = '2px';
-star.style.height = '2px';
-star.style.background = '#fff';
-star.style.borderRadius = '50%';
-star.style.boxShadow = '0 0 10px 2px #fff, 0 0 20px 4px #ff7b00';
-star.style.left = Math.random() * 100 + 'vw';
-star.style.top = Math.random() * 50 + 'vh';
-star.style.opacity = '0';
-const angle = Math.random() * 45 + 135;
-star.style.transform = `rotate(${angle}deg)`;
-bg.appendChild(star);
-star.animate([
-{ transform: `translate(0, 0) rotate(${angle}deg)`, opacity: 0 },
-{ opacity: 1, offset: 0.1 },
-{ transform: `translate(-200px, 200px) rotate(${angle}deg)`, opacity: 0 }
-], {
-duration: 1000 + Math.random() * 1000,
-easing: 'ease-out'
-}).onfinish = () => star.remove();
-}
-setInterval(() => {
-if (Math.random() > 0.6) createShootingStar();
-}, 3000);
-const scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 300) {
-scrollTopBtn.classList.add('show');
-} else {
-scrollTopBtn.classList.remove('show');
-}
-});
-scrollTopBtn.addEventListener('click', () => {
-window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-const stars = document.querySelectorAll('.star');
-document.addEventListener('mousemove', (e) => {
-stars.forEach(star => {
-const rect = star.getBoundingClientRect();
-const dist = Math.hypot(e.clientX - rect.left, e.clientY - rect.top);
-if (dist < 100) {
-star.style.boxShadow = '0 0 20px 5px rgba(255, 123, 0, 0.8)';
-star.style.background = '#ffb347';
-} else {
-star.style.boxShadow = '0 0 10px rgba(255,255,255,.5)';
-star.style.background = '#fff';
-}
-});
-});
-const cursorDot = document.createElement('div');
-cursorDot.classList.add('cursor-dot');
-document.body.appendChild(cursorDot);
-const trails = [];
-const trailCount = 8;
-for (let i = 0; i < trailCount; i++) {
-const t = document.createElement('div');
-t.classList.add('cursor-trail');
-t.style.opacity = (1 - i / trailCount) * 0.7;
-t.style.width = (6 - i * 0.5) + 'px';
-t.style.height = (6 - i * 0.5) + 'px';
-document.body.appendChild(t);
-trails.push({ el: t, x: 0, y: 0 });
-}
-let cursorX = window.innerWidth / 2;
-let cursorY = window.innerHeight / 2;
-document.addEventListener('mousemove', (e) => {
-cursorX = e.clientX;
-cursorY = e.clientY;
-cursorDot.style.left = cursorX + 'px';
-cursorDot.style.top = cursorY + 'px';
-});
-document.addEventListener('mousedown', () => {
-cursorDot.classList.add('clicking');
-});
-document.addEventListener('mouseup', () => {
-cursorDot.classList.remove('clicking');
-});
-function animateTrail() {
-let prevX = cursorX;
-let prevY = cursorY;
-trails.forEach((trail, index) => {
-trail.x += (prevX - trail.x) * 0.3;
-trail.y += (prevY - trail.y) * 0.3;
-trail.el.style.left = trail.x + 'px';
-trail.el.style.top = trail.y + 'px';
-prevX = trail.x;
-prevY = trail.y;
-});
-requestAnimationFrame(animateTrail);
-}
-animateTrail();
-const sectionsForGlow = document.querySelectorAll('.section');
-sectionsForGlow.forEach(section => {
-section.addEventListener('mousemove', e => {
-const rect = section.getBoundingClientRect();
-const x = e.clientX - rect.left;
-const y = e.clientY - rect.top;
-section.style.setProperty('--mouse-x', `${x}px`);
-section.style.setProperty('--mouse-y', `${y}px`);
-});
-});
-const notebookSection = document.querySelector('.notebook-section');
-const portalObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
-document.body.classList.add('portal-active');
-} else if (!entry.isIntersecting) {
-document.body.classList.remove('portal-active');
-}
-});
-}, { threshold: [0, 0.4, 0.8] });
-if (notebookSection) {
-portalObserver.observe(notebookSection);
-}
-});
+cat > script.js <<'EOF'
+'use strict';
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function (v, m) { return Math.max(-m, Math.min(m, v)); };
+
+  (function () {
+    var c = document.getElementById('sky'), x = c.getContext('2d');
+    var w, h, stars = [], mouse = { x: -999, y: -999 }, link = 120, raf = 0, timer;
+    var colors = ['#ffffff', '#19f2ff', '#ff8cec'];
+
+    function size() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      w = innerWidth; h = innerHeight;
+      c.width = w * dpr; c.height = h * dpr;
+      x.setTransform(dpr, 0, 0, dpr, 0, 0);
+      link = w < 600 ? 95 : 125;
+      var n = Math.round(Math.min(80, Math.max(28, w * h / 11000)));
+      stars = [];
+      for (var i = 0; i < n; i++) {
+        stars.push({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
+          r: Math.random() * 1.2 + .5, t: Math.random() * 6.28,
+          col: colors[(Math.random() * 3) | 0]
+        });
+      }
+    }
+
+    function draw(move) {
+      x.clearRect(0, 0, w, h);
+      var i, j, a, b, dx, dy, d2, L2 = link * link, al;
+      for (i = 0; i < stars.length; i++) {
+        a = stars[i];
+        if (move) {
+          a.x += a.vx; a.y += a.vy; a.t += .03;
+          if (a.x < -10) a.x = w + 10; else if (a.x > w + 10) a.x = -10;
+          if (a.y < -10) a.y = h + 10; else if (a.y > h + 10) a.y = -10;
+        }
+      }
+      x.lineWidth = 1;
+      for (i = 0; i < stars.length; i++) {
+        a = stars[i];
+        for (j = i + 1; j < stars.length; j++) {
+          b = stars[j]; dx = a.x - b.x; dy = a.y - b.y; d2 = dx * dx + dy * dy;
+          if (d2 < L2) {
+            al = (1 - d2 / L2) * .4;
+            x.strokeStyle = 'rgba(25,242,255,' + al.toFixed(3) + ')';
+            x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke();
+          }
+        }
+        dx = a.x - mouse.x; dy = a.y - mouse.y; d2 = dx * dx + dy * dy;
+        if (d2 < L2 * 1.6) {
+          al = (1 - d2 / (L2 * 1.6)) * .6;
+          x.strokeStyle = 'rgba(255,43,214,' + al.toFixed(3) + ')';
+          x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(mouse.x, mouse.y); x.stroke();
+        }
+      }
+      for (i = 0; i < stars.length; i++) {
+        a = stars[i];
+        x.globalAlpha = .65 + .35 * Math.sin(a.t);
+        x.fillStyle = a.col;
+        x.beginPath(); x.arc(a.x, a.y, a.r, 0, 6.2832); x.fill();
+      }
+      x.globalAlpha = 1;
+    }
+
+    function loop() { draw(true); raf = requestAnimationFrame(loop); }
+    function start() { if (!raf && !reduce) raf = requestAnimationFrame(loop); }
+    function stop() { cancelAnimationFrame(raf); raf = 0; }
+
+    size();
+    if (reduce) draw(false); else start();
+    addEventListener('resize', function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { size(); if (reduce) draw(false); }, 150);
+    });
+    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+    addEventListener('pointermove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    document.addEventListener('pointerleave', function () { mouse.x = mouse.y = -999; });
+  })();
+
+  (function () {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var root = document.documentElement;
+    var dot = document.querySelector('.cur-dot'), ring = document.querySelector('.cur-ring');
+    var tx = 0, ty = 0, rx = 0, ry = 0, raf = 0;
+    root.classList.add('has-cursor');
+
+    function frame() {
+      rx += (tx - rx) * .2; ry += (ty - ry) * .2;
+      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      if (Math.abs(tx - rx) > .1 || Math.abs(ty - ry) > .1) raf = requestAnimationFrame(frame);
+      else raf = 0;
+    }
+    addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      dot.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
+      root.classList.add('show');
+      if (!raf) raf = requestAnimationFrame(frame);
+    }, { passive: true });
+    document.addEventListener('pointerover', function (e) {
+      ring.classList.toggle('on', !!(e.target.closest && e.target.closest('a,button,[role=tab],.badge')));
+    });
+    addEventListener('pointerdown', function () { ring.classList.add('down'); });
+    addEventListener('pointerup', function () { ring.classList.remove('down'); });
+    document.addEventListener('pointerleave', function () { root.classList.remove('show'); });
+  })();
+
+  (function () {
+    var swing = document.getElementById('swing'), badge = document.getElementById('badge');
+    var a = .08, va = 0, s = 0, vs = 0, last = 0, run = false;
+
+    function apply() {
+      swing.style.transform = 'rotate(' + a.toFixed(4) + 'rad)';
+      badge.style.transform = 'perspective(600px) rotateY(' + s.toFixed(2) + 'deg)';
+      badge.style.setProperty('--sh', (50 + s * .9).toFixed(1) + '%');
+    }
+    function step(now) {
+      var dt = Math.min(.033, (now - last) / 1000 || .016);
+      last = now;
+      va += -22 * Math.sin(a) * dt; va *= Math.exp(-.8 * dt); a += va * dt;
+      vs += (-60 * s - 5 * vs) * dt; s += vs * dt;
+      a = clamp(a, 1.1); s = clamp(s, 75);
+      if (Math.abs(a) < .0006 && Math.abs(va) < .01 && Math.abs(s) < .1 && Math.abs(vs) < .2) {
+        a = s = va = vs = 0; apply(); run = false; return;
+      }
+      apply();
+      requestAnimationFrame(step);
+    }
+    function wake() { if (!run) { run = true; last = performance.now(); requestAnimationFrame(step); } }
+    function kick(k) {
+      va = clamp(va - k * 2.6, 6); vs = clamp(vs + k * 520, 900);
+      wake();
+    }
+
+    badge.addEventListener('pointerdown', function (e) {
+      var r = badge.getBoundingClientRect();
+      var k = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      if (Math.abs(k) < .25) k = (Math.random() < .5 ? -1 : 1) * .25;
+      kick(clamp(k, 1));
+    });
+    badge.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kick(Math.random() < .5 ? -.8 : .8); }
+    });
+    apply();
+    if (!reduce) wake();
+  })();
+
+  (function () {
+    var el = document.getElementById('typed');
+    var phrases = [
+      'Привет, я Рэй (или просто Макс)',
+      'Кодю сайты и рисую арты',
+      'Жду первого снега и запаха мандаринов',
+      'Учусь быть легендой'
+    ];
+    if (reduce) { el.textContent = phrases[0]; return; }
+    var i = 0, j = 0, del = false;
+    function tick() {
+      var p = phrases[i];
+      if (!del) {
+        j++; el.textContent = p.slice(0, j);
+        if (j === p.length) { del = true; return setTimeout(tick, 1700); }
+        return setTimeout(tick, 50 + Math.random() * 50);
+      }
+      j--; el.textContent = p.slice(0, j);
+      if (j === 0) { del = false; i = (i + 1) % phrases.length; return setTimeout(tick, 350); }
+      setTimeout(tick, 25);
+    }
+    tick();
+  })();
+
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role=tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[role=tabpanel]'));
+    function open(id, focus) {
+      if (!document.getElementById('p-' + id)) id = 'about';
+      tabs.forEach(function (t) {
+        var on = t.dataset.tab === id;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        if (on) { t.scrollIntoView({ inline: 'center', block: 'nearest' }); if (focus) t.focus(); }
+      });
+      panels.forEach(function (p) { p.hidden = p.id !== 'p-' + id; });
+      if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+    }
+    tabs.forEach(function (t, n) {
+      t.addEventListener('click', function () { open(t.dataset.tab); });
+      t.addEventListener('keydown', function (e) {
+        var m = { ArrowRight: n + 1, ArrowLeft: n - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (m === undefined) return;
+        e.preventDefault();
+        open(tabs[(m + tabs.length) % tabs.length].dataset.tab, true);
+      });
+    });
+    addEventListener('hashchange', function () { open(location.hash.slice(1)); });
+    open(location.hash.slice(1) || 'about');
+  })();
+
+  (function () {
+    var thoughts = [
+      '«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».',
+      '😎 Когда код работает, но ты не знаешь почему. Не трогай его!',
+      '«Мышонок в безопасности, пока рядом Мявка».',
+      '💻 Пытаюсь понять, почему кулон летает, а не висит.'
+    ];
+    var i = 0, el = document.getElementById('thought'), busy = false;
+    document.getElementById('next').addEventListener('click', function () {
+      if (busy) return; busy = true;
+      el.classList.add('out');
+      setTimeout(function () {
+        i = (i + 1) % thoughts.length; el.textContent = thoughts[i];
+        el.classList.remove('out'); busy = false;
+      }, 250);
+    });
+  })();
+})();
+EOF
