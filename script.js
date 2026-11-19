@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('active');
         });
     });
+    
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         t.style.width = (6 - i * 0.5) + 'px';
         t.style.height = (6 - i * 0.5) + 'px';
         document.body.appendChild(t);
-        trails.push({ el: t, x: 0, y: 0 });
+        trails.push({ el: t, x: window.innerWidth / 2, y: window.innerHeight / 2 });
     }
 
     let cursorX = window.innerWidth / 2;
@@ -164,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorDot.style.left = cursorX + 'px';
         cursorDot.style.top = cursorY + 'px';
     });
+    
     document.addEventListener('mousedown', () => cursorDot.classList.add('clicking'));
     document.addEventListener('mouseup', () => cursorDot.classList.remove('clicking'));
 
