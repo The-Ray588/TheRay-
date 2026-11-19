@@ -20,17 +20,16 @@
         <a href="#notebook" class="tab">Блокнот</a>
     </nav>
 
-    <div class="content-wrapper">
-        
-        <div class="necklace-container" id="necklaceContainer">
-            <div class="thread" id="thread">
-                <div class="pendant" id="pendant">
-                    <div class="pendant-inner">✦</div>
-                </div>
+    <div class="necklace-container" id="necklaceContainer">
+        <div class="thread" id="thread">
+            <div class="pendant" id="pendant">
+                <div class="pendant-inner">✦</div>
             </div>
         </div>
+    </div>
 
-        <div class="section" id="about">
+    <div class="section active" id="about">
+        <div>
             <h2 class="section-title">О себе</h2>
             <div class="about-text">
                 <p><strong>Привет, я Рэй (или просто Макс).</strong></p>
@@ -40,8 +39,10 @@
                 <div class="quote">«Не судите строго, я только учусь быть легендой».</div>
             </div>
         </div>
+    </div>
 
-        <div class="section" id="friends">
+    <div class="section" id="friends">
+        <div>
             <h2 class="section-title">Друзья и брошки</h2>
             <div class="friends-grid">
                 <div class="friend-card"><div class="friend-name">Катзи</div><div class="friend-desc">Самый лучший переживающий человек</div></div>
@@ -53,8 +54,10 @@
                 <div class="friend-card"><div class="friend-name">Лимонадеч</div><div class="friend-desc">Дружбан</div></div>
             </div>
         </div>
+    </div>
 
-        <div class="section" id="hobbies">
+    <div class="section" id="hobbies">
+        <div>
             <h2 class="section-title">Хобби</h2>
             <ul class="hobby-list">
                 <li class="hobby-item">🏃 Спорт <span class="hobby-desc">— Держу себя в форме, чтобы потом весь день сидеть за компом.</span></li>
@@ -63,8 +66,10 @@
                 <li class="hobby-item">⛏️ Minecraft: «Парадокс 3: Истина» <span class="hobby-desc">— Участвую в этом проекте. Это не просто игра, это целая история.</span></li>
             </ul>
         </div>
+    </div>
 
-        <div class="section" id="socials">
+    <div class="section" id="socials">
+        <div>
             <h2 class="section-title">Ссылки на соцсети</h2>
             <div class="social-links">
                 <a href="https://t.me/reychik_sketch" target="_blank" class="social-btn"><span class="social-icon">🎨</span><div class="social-info"><span class="social-name">Telegram (Арты)</span><span class="social-desc">Мое творчество, скетчи и всё, что рисую</span></div></a>
@@ -73,8 +78,10 @@
                 <a href="https://discord.gg/9K3yqP7H" target="_blank" class="social-btn"><span class="social-icon">💬</span><div class="social-info"><span class="social-name">Discord</span><span class="social-desc">Для связи, игр и поболтать</span></div></a>
             </div>
         </div>
+    </div>
 
-        <div class="section" id="developers">
+    <div class="section" id="developers">
+        <div>
             <h2 class="section-title">Кто разрабатывал сайт</h2>
             <div class="dev-info">
                 <p><span class="dev-name">TheRayDev</span> — Идейный вдохновитель, дизайнер и главный по коду (это я).</p>
@@ -82,8 +89,10 @@
                 <div class="dev-seal">Сделано с ❤️</div>
             </div>
         </div>
+    </div>
 
-        <div class="section notebook-section" id="notebook">
+    <div class="section notebook-section" id="notebook">
+        <div>
             <h2 class="notebook-title">Мысли Рэйя</h2>
             <div class="notebook-content">
                 <div class="quote-sticker">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</div>
@@ -92,7 +101,11 @@
                 <div class="meme-sticker" style="transform:rotate(-1deg);"><span>💻 Пытаюсь понять, почему кулон летает, а не висит.</span></div>
             </div>
         </div>
+    </div>
 
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn">↑</button>
+        <button class="nav-btn" id="nextBtn">↓</button>
     </div>
 
     <script src="script.js"></script>
