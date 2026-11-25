@@ -30,6 +30,10 @@ body { background: radial-gradient(circle at 50% 20%, #2a0b4a 0%, #0f0518 100%);
 .tab { color: var(--text-dim); text-decoration: none; font-size: 0.95rem; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; border: 1px solid transparent; display: inline-block; will-change: transform; }
 .tab:hover, .tab.active { color: var(--accent-glow); border-color: rgba(179, 71, 255, 0.5); background: rgba(179, 71, 255, 0.1); text-shadow: 0 0 8px rgba(179, 71, 255, 0.8); }
 
+.journey-map { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 600px; height: 2px; z-index: 1000; }
+.journey-line { width: 100%; height: 100%; background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+.journey-progress { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent); box-shadow: 0 0 10px var(--accent); border-radius: 2px; transition: width 0.5s ease; }
+
 .section { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 20px; opacity: 0; pointer-events: none; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; perspective: 1200px; z-index: 1; }
 .section.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
@@ -45,10 +49,12 @@ body { background: radial-gradient(circle at 50% 20%, #2a0b4a 0%, #0f0518 100%);
 .about-text .quote { font-family: var(--font-hand); font-size: 1.8rem; color: var(--accent-glow); text-align: center; margin-top: 25px; font-style: italic; text-shadow: 0 0 10px rgba(179, 71, 255,.5); }
 
 .friends-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.friend-card { background: rgba(179, 71, 255,.05); border: 1px solid rgba(179, 71, 255,.2); border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
+.friend-card { background: rgba(179, 71, 255,.05); border: 1px solid rgba(179, 71, 255,.2); border-radius: 12px; padding: 20px; transition: all 0.3s ease; position: relative; overflow: hidden; }
 .friend-card:hover { background: rgba(179, 71, 255,.15); border-color: var(--accent-glow); box-shadow: 0 10px 20px rgba(0,0,0,.4), 0 0 15px rgba(179, 71, 255, 0.3); }
-.friend-name { font-weight: 700; font-size: 1.3rem; color: var(--accent-glow); margin-bottom: 5px; }
-.friend-desc { font-size: .9rem; color: var(--text-dim); }
+.friend-card::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(179, 71, 255, 0.3); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.4s ease, height 0.4s ease; opacity: 0; }
+.friend-card:hover::before { width: 300px; height: 300px; opacity: 1; }
+.friend-name { font-weight: 700; font-size: 1.3rem; color: var(--accent-glow); margin-bottom: 5px; position: relative; z-index: 1; }
+.friend-desc { font-size: .9rem; color: var(--text-dim); position: relative; z-index: 1; }
 
 .hobby-list { list-style: none; }
 .hobby-item { font-size: 1.1rem; margin-bottom: 15px; padding-left: 30px; position: relative; }
@@ -72,6 +78,13 @@ body { background: radial-gradient(circle at 50% 20%, #2a0b4a 0%, #0f0518 100%);
 .quote-sticker:hover { transform: scale(1.02) translateY(-5px); }
 .meme-sticker { background: #e1f5fe; padding: 20px; border-radius: 5px; box-shadow: 3px 3px 10px rgba(0,0,0,.3); border-left: 6px solid #03a9f4; display: flex; justify-content: center; text-align: center; font-size: 1.2rem; transition: transform .3s ease; }
 .meme-sticker:hover { transform: scale(1.02) translateY(-5px); }
+
+.terminal { background: #0d0d0d; border: 1px solid #333; border-radius: 5px; padding: 15px; font-family: monospace; color: #0f0; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.terminal-header { margin-bottom: 10px; color: #0f0; }
+.cursor-blink { animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.terminal-output { margin-bottom: 10px; min-height: 40px; white-space: pre-wrap; }
+.terminal-input { width: 100%; background: transparent; border: none; color: #0f0; font-family: monospace; outline: none; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 5px; }
 
 .nav-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 1000; }
 .nav-btn { background: rgba(179, 71, 255, 0.2); border: 2px solid var(--accent); color: var(--text-light); width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: none; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; will-change: transform; }
@@ -99,4 +112,5 @@ body, a, button, .tab, .nav-btn { cursor: auto; }
 .tilt-card { padding: 20px; }
 .nav-controls { bottom: 20px; }
 .nav-btn { width: 40px; height: 40px; font-size: 1.2rem; }
-                                 }
+.journey-map { width: 90%; bottom: 80px; }
+  }
