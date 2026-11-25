@@ -27,6 +27,11 @@
         <a href="#notebook" class="tab" data-theme="orange">Блокнот</a>
     </nav>
 
+    <div class="journey-map">
+        <div class="journey-line"></div>
+        <div class="journey-progress" id="journeyProgress"></div>
+    </div>
+
     <div class="necklace-container" id="necklaceContainer">
         <div class="thread" id="thread">
             <div class="pendant" id="pendant">
@@ -104,8 +109,11 @@
             <div class="notebook-content parallax-text">
                 <div class="quote-sticker">«Жизнь — как кубик Рубика. Иногда чтобы собрать, нужно всё сломать».</div>
                 <div class="meme-sticker"><span>😎 Когда код работает, но ты не знаешь почему. Не трогай его!</span></div>
-                <div class="quote-sticker" style="transform:rotate(2deg);background:#ffe0b2;">«Мышонок в безопасности, пока рядом Мявка».</div>
-                <div class="meme-sticker" style="transform:rotate(-1deg);"><span>💻 Пытаюсь понять, почему кулон летает, а не висит.</span></div>
+                <div class="terminal" id="terminal">
+                    <div class="terminal-header">root@ray:~# <span class="cursor-blink">_</span></div>
+                    <div class="terminal-output" id="termOutput">Введите 'help' или 'secret'.</div>
+                    <input type="text" class="terminal-input" id="termInput" placeholder="Введите команду..." autocomplete="off">
+                </div>
             </div>
         </div>
     </div>
@@ -117,4 +125,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                                                               </html>
