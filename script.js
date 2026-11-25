@@ -26,16 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
             osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.05);
             gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.05);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.05);
         } else if (type === 'click') {
             osc.type = 'triangle';
             osc.frequency.setValueAtTime(400, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.1);
             gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.1);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.1);
         }
     }
 
@@ -73,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let cursorX = window.innerWidth / 2;
     let cursorY = window.innerHeight / 2;
     let mouse = { x: -1000, y: -1000, radius: 200 };
-
     const parallaxTexts = document.querySelectorAll('.parallax-text');
     
     document.addEventListener('mousemove', (e) => {
@@ -207,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sections = document.querySelectorAll('.section');
     const tabs = document.querySelectorAll('.tab');
+    const journeyProgress = document.getElementById('journeyProgress');
     let currentIndex = 0;
 
     function setTheme(theme) {
@@ -229,6 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTheme(tabs[index].getAttribute('data-theme'));
         }
         currentIndex = index;
+        
+        const progress = (index / (sections.length - 1)) * 100;
+        journeyProgress.style.width = progress + '%';
     }
 
     document.getElementById('nextBtn').addEventListener('click', () => { playSound('click'); goToSection(currentIndex + 1); });
@@ -315,4 +316,29 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animatePendant);
     }
     animatePendant();
+
+    const termInput = document.getElementById('termInput');
+    const termOutput = document.getElementById('termOutput');
+    
+    termInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const cmd = termInput.value.trim().toLowerCase();
+            termInput.value = '';
+            
+            if (cmd === 'help') {
+                termOutput.innerHTML = "Доступные команды:<br>- help: показать это сообщение<br>- secret: открыть секрет<br>- clear: очистить терминал";
+            } else if (cmd === 'secret') {
+                termOutput.innerHTML = "Ты нашел секрет! Рэй передает привет. Мявка - лучший мышонок!";
+            } else if (cmd === 'clear') {
+                termOutput.innerHTML = "";
+            } else if (cmd !== '') {
+                termOutput.innerHTML = `Команда не найдена: ${cmd}`;
+            }
+        }
+    });
+
+    const hour = new Date().getHours();
+    if (hour >= 22 || hour < 6) {
+        document.body.style.filter = 'brightness(0.8) contrast(1.1)';
+    }
 });
